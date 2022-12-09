@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsFillBasketFill, BsTypeH1 } from "react-icons/bs";
 import Link from "next/link";
 
