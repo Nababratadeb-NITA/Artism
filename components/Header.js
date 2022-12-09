@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BsFillBasketFill, BsTypeH1 } from "react-icons/bs";
 import Link from "next/link";
 
@@ -10,6 +10,7 @@ import { IoMdAdd } from "react-icons/io";
 function Header() {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
   const { data: session, status } = useSession();
+  const [user, setUser] = useState();
 
   if (status === "loading")
     return (
