@@ -1,39 +1,41 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { toast } from 'react-hot-toast';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { toast } from "react-hot-toast";
 
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
   const getLocalStorage = (name) => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const storage = localStorage.getItem(name);
 
       if (storage) return JSON.parse(localStorage.getItem(name));
 
-      if (name === 'cartItems') return [];
+      if (name === "cartItems") return [];
 
       return 0;
     }
   };
 
   const [showCart, setShowCart] = useState(false);
-  const [cartItems, setCartItems] = useState(getLocalStorage('cartItems'));
-  const [totalPrice, setTotalPrice] = useState(getLocalStorage('totalPrice'));
-  const [totalQuantities, setTotalQuantities] = useState(getLocalStorage('totalQuantities'));
+  const [cartItems, setCartItems] = useState(getLocalStorage("cartItems"));
+  const [totalPrice, setTotalPrice] = useState(getLocalStorage("totalPrice"));
+  const [totalQuantities, setTotalQuantities] = useState(
+    getLocalStorage("totalQuantities")
+  );
   const [qty, setQty] = useState(1);
 
   let findProduct;
   let index;
-  
+
   useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
-    localStorage.setItem('totalQuantities', JSON.stringify(totalQuantities));
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+    localStorage.setItem("totalQuantities", JSON.stringify(totalQuantities));
   }, [cartItems, totalPrice, totalQuantities]);
 
   const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find(
-      (cartProduct) => cartProduct._id === product._id,
+      (cartProduct) => cartProduct._id === product._id
     );
 
     if (checkProductInCart) {
@@ -72,19 +74,13 @@ export const StateContext = ({ children }) => {
     findProduct = cartItems.find((item) => item._id === id);
     index = cartItems.findIndex((product) => product._id === id);
 
-    if (value === 'inc') {
+    if (value === "inc") {
       findProduct.quantity += 1;
       cartItems[index] = findProduct;
       setTotalPrice(totalPrice + findProduct.price);
       setTotalQuantities(totalQuantities + 1);
-    } else if (value === 'dec') {
+    } else if (value === "dec") {
       if (findProduct.quantity > 1) {
-      // setCartItems([...cartItems, { ...findProduct, quantity: findProduct.quantity + 1 }]);
-      // setTotalPrice((totalPrice) => totalPrice + findProduct.price)
-      // setTotalQuantities(totalQuantities => totalQuantities + 1);
-      // setCartItems([...cartItems, { ...findProduct, quantity: findProduct.quantity - 1 }]);
-      // setTotalPrice((totalPrice) => totalPrice - findProduct.price)
-      // setTotalQuantities(totalQuantities => totalQuantities - 1);
         findProduct.quantity -= 1;
         cartItems[index] = findProduct;
         setTotalPrice(totalPrice - findProduct.price);
@@ -128,8 +124,7 @@ export const StateContext = ({ children }) => {
         decQty,
         qty,
         toggleCartItemQuantity,
-      }}
-    >
+      }}>
       {children}
     </Context.Provider>
   );

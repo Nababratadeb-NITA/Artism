@@ -1,43 +1,70 @@
-import React from 'react'
-import { BsFillBasketFill, BsSearch } from "react-icons/bs";
-import Link from 'next/link';
+import React, { useEffect } from "react";
+import { BsFillBasketFill, BsTypeH1 } from "react-icons/bs";
+import Link from "next/link";
 
-import { useStateContext} from '../context/StateContext';
-import Cart from './Cart';
+import { useStateContext } from "../context/StateContext";
+import Cart from "./Cart";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { IoMdAdd } from "react-icons/io";
 
 function Header() {
-    const { showCart, setShowCart, totalQuantities } = useStateContext();
+  const { showCart, setShowCart, totalQuantities } = useStateContext();
+  const { data: session, status } = useSession();
+
+  if (status === "loading")
+    return (
+      <p className="logo font-extrabold mx-auto text-2xl bg-yellow-400 text-black">
+        ARTISM
+      </p>
+    );
 
   return (
-          <div className='navbar-container flex items-center'>
-              <p className='logo font-extrabold'>
-                  <Link href="/">ARTISM</Link>
-              </p>
+    <div className="navbar-container flex items-center">
+      <p className="logo font-extrabold">
+        <Link href="/">ARTISM</Link>
+      </p>
 
-              {/* searchbar */}
-              
+      {/* Right */}
+      <div className="text-black flex items-center text-xs space-x-6 whitespace-nowrap">
+        <div className="relative link flex items-center cursor-pointer">
+          <Link href={"/createproduct"}>
+            {!session ? (
+              <BsTypeH1 />
+            ) : (
+              <IoMdAdd className="bg-yellow-400 h-8 w-8 rounded-full" />
+            )}
+          </Link>
+        </div>
+        <div className="">
+          {!session ? (
+            <h1 className="font-extrabold md:text-sm link ">Please Click To</h1>
+          ) : (
+            <h1 className="font-extrabold italic text-sm">
+              {session.user.name}
+            </h1>
+          )}
+          <p
+            onClick={session ? signOut : signIn}
+            className="font-extrabold md:text-sm link cursor-pointer">
+            {session ? "sign out" : "sign in"}
+          </p>
+        </div>
 
-              {/* Right */}
-              <div className='text-black flex items-center text-xs space-x-6 whitespace-nowrap'>
-                  <div className=''>
-                  <p>Hello Nababrata Deb</p>
-                  <Link href='/login'>
-                      <p className='font-extrabold md:text-sm link'>Log Out</p>
-                  </Link>
-                  </div>
-
-                  <div onClick={()=> setShowCart(true)} className=' relative link flex items-center cart-icon'>
-                      
-                      <span className='absolute top-0 ring-0 md:right-10 h-5 w-5 bg-yellow-400 text-center rounded-full text-black font-bold'>{totalQuantities}</span>
-                      <BsFillBasketFill className='h-10' />
-                      <p className='hidden md:inline font-extrabold md:text-sm mx-2 '>Cart</p>
-                  </div>
-                  
-          </div>
-          {showCart&& <Cart/>}
-          </div>
-          
-  )
+        <div
+          onClick={() => setShowCart(true)}
+          className=" relative link flex items-center cart-icon">
+          <span className="absolute top-0 ring-0 md:right-10 h-5 w-5 bg-yellow-400 text-center rounded-full text-black font-bold">
+            {totalQuantities}
+          </span>
+          <BsFillBasketFill className="h-10" />
+          <p className="hidden md:inline font-extrabold md:text-sm mx-2 ">
+            Cart
+          </p>
+        </div>
+      </div>
+      {showCart && <Cart />}
+    </div>
+  );
 }
 
-export default Header
+export default Header;

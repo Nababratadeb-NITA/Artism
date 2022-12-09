@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { BsBagCheckFill } from 'react-icons/bs';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { BsBagCheckFill } from "react-icons/bs";
 
-import { useStateContext } from '../context/StateContext';
-import { runFireworks } from '../lib/utils';
+import { useStateContext } from "../context/StateContext";
+import { runFireworks } from "../lib/utils";
 
 const Success = () => {
   const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
-  
+
   useEffect(() => {
     localStorage.clear();
     setCartItems([]);
@@ -37,7 +37,7 @@ const Success = () => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Success
+export default Success;
