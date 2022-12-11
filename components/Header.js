@@ -10,7 +10,6 @@ import { IoMdAdd } from "react-icons/io";
 function Header() {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
   const { data: session, status } = useSession();
-  const [user, setUser] = useState();
 
   if (status === "loading")
     return (
@@ -29,11 +28,7 @@ function Header() {
       <div className="text-black flex items-center text-xs space-x-6 whitespace-nowrap">
         <div className="relative link flex items-center cursor-pointer">
           <Link href={"/createproduct"}>
-            {!session ? (
-              <BsTypeH1 />
-            ) : (
-              <IoMdAdd className="bg-yellow-400 h-8 w-8 rounded-full" />
-            )}
+            <IoMdAdd className="bg-yellow-400 h-8 w-8 rounded-full" />
           </Link>
         </div>
         <div className="">
