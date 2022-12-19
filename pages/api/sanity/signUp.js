@@ -1,5 +1,5 @@
 // pages/api/sanity/signUp.ts
 import { signUpHandler } from "next-auth-sanity";
-import { client } from "your/sanity/client";
+import { client } from "../../../lib/client";
 
 export default signUpHandler(client);
