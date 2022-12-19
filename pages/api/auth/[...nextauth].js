@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import { SanityAdapter, SanityCredentials } from "next-auth-sanity";
+import { SanityAdapter } from "next-auth-sanity";
 import googleProvider from "next-auth/providers/google";
 import { client } from "../../../lib/client";
 export const authOptions = {
@@ -7,7 +7,7 @@ export const authOptions = {
   providers: [
     googleProvider({
       clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+      clientSecret: process.env.GOOGLE_SECRET !== "production",
     }),
   ],
   session: {
