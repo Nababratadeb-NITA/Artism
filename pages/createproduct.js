@@ -4,6 +4,7 @@ import { MdDelete } from "react-icons/md";
 import { signIn, useSession } from "next-auth/react";
 import { client } from "../lib/client";
 import { useRouter } from "next/router";
+import Loader from "../components/Loader";
 
 const createproduct = () => {
   const [title, setTitle] = useState("");
@@ -47,27 +48,10 @@ const createproduct = () => {
     }
   };
 
+  // console.log(uploadImage);
+
   const savePin = () => {
-    if (title && about && destination && imageAsset?._id && category) {
-      const doc = {
-        _type: "pin",
-        title,
-        about,
-        destination,
-        image: {
-          _type: "image",
-          asset: {
-            _type: "reference",
-            _ref: imageAsset?._id,
-          },
-        },
-        userId: session.user.image,
-        postedBy: {
-          _type: "postedBy",
-          _ref: session.user.image,
-        },
-        category,
-      };
+    if ("") {
       client.create(doc).then(() => {
         router.push("/");
       });
@@ -90,32 +74,32 @@ const createproduct = () => {
       <div className=" flex lg:flex-row flex-col justify-center items-center bg-white lg:p-5 p-3 lg:w-4/5  w-full">
         <div className="bg-secondaryColor p-3 flex flex-0.7 w-full">
           <div className=" flex justify-center items-center flex-col border-2 border-dotted border-gray-300 p-3 w-full h-420">
-            {/* {loading && "<Spinner />"}
+            {loading && <Loader />}
             {wrongImageType && <p>It&apos;s wrong file type.</p>}
             {!imageAsset ? (
-              // eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label>
-              <div className="flex flex-col items-center justify-center h-full">
-                <div className="flex flex-col justify-center items-center">
-                  <p className="font-bold text-2xl">
-                    <AiOutlineCloudUpload />
-                  </p>
-                  <p className="text-lg">Click to upload</p>
-                </div>
+              // eslint-disable-next-line jsx-a11y/label-has-associated-control
+              <label>
+                <div className="flex flex-col items-center justify-center h-full">
+                  <div className="flex flex-col justify-center items-center">
+                    <p className="font-bold text-2xl">
+                      <AiOutlineCloudUpload />
+                    </p>
+                    <p className="text-lg">Click to upload</p>
+                  </div>
 
-                <p className="mt-32 text-gray-400">
-                  Recommendation: Use high-quality JPG, JPEG, SVG, PNG, GIF or
-                  TIFF less than 20MB
-                </p>
-              </div>
-              <input
-                type="file"
-                name="upload-image"
-                onChange={uploadImage}
-                className="w-0 h-0"
-              />
-            </label>
-            {/* ) : (
+                  <p className="mt-32 text-gray-400">
+                    Recommendation: Use high-quality JPG, JPEG, SVG, PNG, GIF or
+                    TIFF less than 20MB
+                  </p>
+                </div>
+                <input
+                  type="file"
+                  name="upload-image"
+                  onChange={uploadImage}
+                  className="w-0 h-0"
+                />
+              </label>
+            ) : (
               <div className="relative h-full">
                 <img
                   src={imageAsset?.url}
@@ -124,12 +108,12 @@ const createproduct = () => {
                 />
                 <button
                   type="button"
-                  className="absolute bottom-3 right-3 p-3  bg-white text-xl cursor-pointer outline-none rounded-xl hover:shadow-md transition-all duration-500 ease-in-out"
+                  className="absolute bottom-3 right-3 p-3 rounded-full bg-white text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out"
                   onClick={() => setImageAsset(null)}>
                   <MdDelete />
                 </button>
               </div>
-            )} */}
+            )}
           </div>
         </div>
 
@@ -161,7 +145,7 @@ const createproduct = () => {
             className="outline-none rounded-xl text-base sm:text-lg border-b-2 border-gray-200 p-2"
           />
 
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <div>
               <p className="mb-2 font-semibold text:lg sm:text-xl">
                 Choose Pin Category
@@ -172,25 +156,24 @@ const createproduct = () => {
                 }}
                 className="outline-none  w-4/5 text-base border-b-2 border-gray-200 p-2 rounded-md cursor-pointer">
                 <option value="others" className="sm:text-bg bg-white">
-                  Select Category
-                </option>
-                {/* {categories.map((item) => (
+                  Select Category */}
+          {/* </option> */}
+          {/* {categories.map((item) => (
                     <option
                       className="text-base border-0 outline-none  capitalize bg-white text-black "
                       value={item.name}>
                       {item.name}
                     </option>
                   ))} */}
-              </select>
-            </div>
-            <div className="flex justify-end items-end mt-5">
-              <button
-                type="button"
-                onClick={!session ? signIn : savePin}
-                className="bg-yellow-400 text-black font-bold p-2 rounded-full w-28 outline-none ">
-                List Product
-              </button>
-            </div>
+          {/* </select> */}
+          {/* </div> */}
+          <div className="flex justify-end items-end mt-5">
+            <button
+              type="button"
+              onClick={!session ? signIn : savePin}
+              className="bg-yellow-400 text-black font-bold p-2 rounded-full w-28 outline-none ">
+              List Product
+            </button>
           </div>
         </div>
       </div>
