@@ -7,8 +7,9 @@ export const authOptions = {
   providers: [
     googleProvider({
       clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET !== "production",
+      clientSecret: process.env.GOOGLE_SECRET,
     }),
+    (secret = process.env.NEXTAUTH_SECRET),
   ],
   session: {
     strategy: "jwt",
