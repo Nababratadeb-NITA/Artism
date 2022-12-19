@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { signIn, useSession } from "next-auth/react";
 import { client } from "../lib/client";
+import { useRouter } from "next/router";
 
 const createproduct = () => {
   const [title, setTitle] = useState("");
@@ -15,6 +15,7 @@ const createproduct = () => {
   const [imageAsset, setImageAsset] = useState();
   const [wrongImageType, setWrongImageType] = useState(false);
   const { data: session } = useSession();
+  const router = useRouter();
 
   const uploadImage = (e) => {
     const selectedFile = e.target.files[0];
@@ -68,7 +69,7 @@ const createproduct = () => {
         category,
       };
       client.create(doc).then(() => {
-        navigate("/");
+        router.push("/");
       });
     } else {
       setFields(true);
@@ -89,32 +90,32 @@ const createproduct = () => {
       <div className=" flex lg:flex-row flex-col justify-center items-center bg-white lg:p-5 p-3 lg:w-4/5  w-full">
         <div className="bg-secondaryColor p-3 flex flex-0.7 w-full">
           <div className=" flex justify-center items-center flex-col border-2 border-dotted border-gray-300 p-3 w-full h-420">
-            {loading && "<Spinner />"}
+            {/* {loading && "<Spinner />"}
             {wrongImageType && <p>It&apos;s wrong file type.</p>}
             {!imageAsset ? (
-              // eslint-disable-next-line jsx-a11y/label-has-associated-control
-              <label>
-                <div className="flex flex-col items-center justify-center h-full">
-                  <div className="flex flex-col justify-center items-center">
-                    <p className="font-bold text-2xl">
-                      <AiOutlineCloudUpload />
-                    </p>
-                    <p className="text-lg">Click to upload</p>
-                  </div>
-
-                  <p className="mt-32 text-gray-400">
-                    Recommendation: Use high-quality JPG, JPEG, SVG, PNG, GIF or
-                    TIFF less than 20MB
+              // eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            <label>
+              <div className="flex flex-col items-center justify-center h-full">
+                <div className="flex flex-col justify-center items-center">
+                  <p className="font-bold text-2xl">
+                    <AiOutlineCloudUpload />
                   </p>
+                  <p className="text-lg">Click to upload</p>
                 </div>
-                <input
-                  type="file"
-                  name="upload-image"
-                  onChange={uploadImage}
-                  className="w-0 h-0"
-                />
-              </label>
-            ) : (
+
+                <p className="mt-32 text-gray-400">
+                  Recommendation: Use high-quality JPG, JPEG, SVG, PNG, GIF or
+                  TIFF less than 20MB
+                </p>
+              </div>
+              <input
+                type="file"
+                name="upload-image"
+                onChange={uploadImage}
+                className="w-0 h-0"
+              />
+            </label>
+            {/* ) : (
               <div className="relative h-full">
                 <img
                   src={imageAsset?.url}
@@ -128,7 +129,7 @@ const createproduct = () => {
                   <MdDelete />
                 </button>
               </div>
-            )}
+            )} */}
           </div>
         </div>
 
@@ -149,14 +150,14 @@ const createproduct = () => {
             type="text"
             value={about}
             onChange={(e) => setAbout(e.target.value)}
-            placeholder="Tell everyone what your Pin is about"
+            placeholder="Tell everyone what your assest is about"
             className="outline-none rounded-xl text-base sm:text-lg border-b-2 border-gray-200 p-2"
           />
           <input
             type="url"
             vlaue={destination}
             onChange={(e) => setDestination(e.target.value)}
-            placeholder="Add a destination link"
+            placeholder="Add a link where you store the assests"
             className="outline-none rounded-xl text-base sm:text-lg border-b-2 border-gray-200 p-2"
           />
 
@@ -186,8 +187,8 @@ const createproduct = () => {
               <button
                 type="button"
                 onClick={!session ? signIn : savePin}
-                className="bg-red-500 text-white font-bold p-2 rounded-full w-28 outline-none ">
-                Save Pin
+                className="bg-yellow-400 text-black font-bold p-2 rounded-full w-28 outline-none ">
+                List Product
               </button>
             </div>
           </div>

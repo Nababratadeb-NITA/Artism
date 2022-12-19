@@ -6,10 +6,12 @@ import { useStateContext } from "../context/StateContext";
 import Cart from "./Cart";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { IoMdAdd } from "react-icons/io";
+import { useRouter } from "next/router";
 
 function Header() {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
   const { data: session, status } = useSession();
+  const router = useRouter();
 
   if (status === "loading")
     return (
@@ -27,9 +29,10 @@ function Header() {
       {/* Right */}
       <div className="text-black flex items-center text-xs space-x-6 whitespace-nowrap">
         <div className="relative link flex items-center cursor-pointer">
-          <Link href={"/createproduct"}>
-            <IoMdAdd className="bg-yellow-400 h-8 w-8 rounded-full" />
-          </Link>
+          <IoMdAdd
+            onClick={() => router.push("/createproduct")}
+            className="bg-yellow-400 h-8 w-8 rounded-full"
+          />
         </div>
         <div className="">
           {!session ? (
