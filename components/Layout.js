@@ -1,8 +1,8 @@
-import React from 'react';
-import Head from 'next/head';
+import React from "react";
+import Head from "next/head";
 
-import Footer from './Footer';
-import Header from './Header';
+import Footer from "./Footer";
+import Header from "./Header";
 
 const Layout = ({ children }) => {
   return (
@@ -10,17 +10,15 @@ const Layout = ({ children }) => {
       <Head>
         <title>ARTISM</title>
       </Head>
-      <header>
+      <Header>
         <Header />
-      </header>
-      <main className="main-container">
-        {children}
-      </main>
+      </Header>
+      <main className="main-container">{children}</main>
       <footer>
         <Footer />
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

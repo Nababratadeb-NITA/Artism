@@ -1,7 +1,10 @@
+import { RiAccountCircleFill } from "react-icons/ri";
+
 export default {
   name: "account",
   title: "Account",
   type: "document",
+  icon: RiAccountCircleFill,
   fields: [
     {
       name: "providerType",

@@ -1,7 +1,10 @@
+import { RiMacbookLine } from "react-icons/ri";
+
 export default {
   name: "product",
   title: "Product",
   type: "document",
+  icon: RiMacbookLine,
   fields: [
     {
       name: "image",
@@ -38,19 +41,10 @@ export default {
       type: "string",
     },
     {
-      name: "catagory",
-      title: "Catagory",
-      type: "string",
-    },
-    {
-      name: "userId",
-      title: "UserId",
-      type: "string",
-    },
-    {
-      name: "postedBy",
-      title: "PostedBy",
-      type: "postedBy",
+      name: "category",
+      title: "Category",
+      type: "reference",
+      to: [{ type: "category" }],
     },
   ],
 };
