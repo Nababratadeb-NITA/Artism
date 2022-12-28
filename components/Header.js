@@ -50,7 +50,7 @@ function Header() {
             </h1>
           </>
         ) : (
-          <HiUserCircle className="headerIcon" onClick={() => signIn()} />
+          <HiUserCircle className="h-10" onClick={() => signIn()} />
         )}
         {/* //cart */}
         <div
