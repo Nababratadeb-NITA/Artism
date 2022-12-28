@@ -14,6 +14,7 @@
     "@sanity/client": "^3.2.0",
     "@sanity/image-url": "^1.0.1",
     "@stripe/stripe-js": "^1.25.0",
+    "axios": "^1.2.1",
     "canvas-confetti": "^1.5.1",
     "firebase": "^9.14.0",
     "globally": "^0.0.0",
@@ -28,7 +29,8 @@
     "react-hot-toast": "^2.2.0",
     "react-icons": "^4.3.1",
     "react-responsive-carousel": "^3.2.23",
-    "stripe": "^8.209.0"
+    "stripe": "^8.209.0",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.16.7",
