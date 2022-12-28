@@ -19,17 +19,17 @@ function ProductDetails({ products, product }) {
   };
 
   console.log(product);
-  
+
   return (
     <>
       {post && (
         <div>
           <div className="product-detail-container">
             <div>
-          <div className="image-container">
-            <img src={urlFor(image)} className="product-detail-image" />
-          </div>
-        </div>
+              <div className="image-container">
+                <img src={urlFor(image)} className="product-detail-image" />
+              </div>
+            </div>
 
             <div className="product-detail-desc">
               <h1>{name}</h1>
@@ -74,8 +74,8 @@ function ProductDetails({ products, product }) {
 
           <div className="maylike-products-wrapper">
             <h2>You may also like</h2>
-            <div className="relative">
-              <div className="flex px-20 sm:px-20 whitespace-nowrap space-x-10 sm:space-x-20 overflow-scroll scrollbar-hide">
+            <div className="marquee">
+              <div className="maylike-products-container track">
                 {products.map((item) => (
                   <Product key={item._id} product={item} />
                 ))}
@@ -88,9 +88,7 @@ function ProductDetails({ products, product }) {
   );
 }
 
-export async function getServerSideProps ({
-  params: { id },
-}) {
+export async function getServerSideProps({ params: { id } }) {
   const query = `*[_type == "product" && _id == '${id}'][0]`;
   const productsQuery = '*[_type == "product"]';
 
@@ -102,6 +100,6 @@ export async function getServerSideProps ({
   return {
     props: { products, product },
   };
-};
+}
 
 export default ProductDetails;

@@ -5,7 +5,7 @@ import Product from "../components/Product";
 import { client } from "../lib/client";
 
 const Home = ({ products, bannerData, categoryData }) => {
-  console.log(products);
+  // console.log(products);
   return (
     <div className="max-w-screen-2xl mx-auto md:mx-10">
       <Banner banner={bannerData.length && bannerData[0]} />
