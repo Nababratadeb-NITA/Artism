@@ -72,16 +72,16 @@ function ProductDetails({ products, product }) {
             </div>
           </div>
 
-          <div className="maylike-products-wrapper">
-            <h2>You may also like</h2>
-            <div className="relative">
-              <div className="flex px-20 sm:px-20 whitespace-nowrap space-x-10 sm:space-x-20 overflow-scroll scrollbar-hide">
-                {products.map((item) => (
-                  <Product key={item._id} product={item} />
-                ))}
-              </div>
-            </div>
-          </div>
+//           <div className="maylike-products-wrapper">
+//             <h2>You may also like</h2>
+//             <div className="relative">
+//               <div className="flex px-20 sm:px-20 whitespace-nowrap space-x-10 sm:space-x-20 overflow-scroll scrollbar-hide">
+//                 {products.map((item) => (
+//                   <Product key={item._id} product={item} />
+//                 ))}
+//               </div>
+//             </div>
+//           </div>
         </div>
       )}
     </>
