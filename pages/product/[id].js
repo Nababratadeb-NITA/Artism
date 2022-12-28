@@ -32,7 +32,9 @@ function ProductDetails({ products, product }) {
             </div>
 
             <div className="product-detail-desc">
-              <h1>{name}</h1>
+              <h1 className="space-y-2 text-xl font-bold md:text-2xl">
+                {name}
+              </h1>
               <div className="reviews"></div>
               <h4>Details: </h4>
               <p>{details}</p>
@@ -75,7 +77,7 @@ function ProductDetails({ products, product }) {
           <div className="maylike-products-wrapper">
             <h2>You may also like</h2>
             <div className="marquee">
-              <div className="maylike-products-container track">
+              <div className="flex h-fit w-[320px] select-none space-y-3 rounded-xl track">
                 {products.map((item) => (
                   <Product key={item._id} product={item} />
                 ))}
