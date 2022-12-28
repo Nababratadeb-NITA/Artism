@@ -23,12 +23,14 @@ export default {
       options: {
         source: "name",
         maxLength: 90,
+        slugify: (input) =>
+          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
     },
     {
       name: "price",
       title: "Price",
-      type: "number",
+      type: "string",
     },
     {
       name: "details",

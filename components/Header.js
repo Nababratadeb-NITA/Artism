@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { BsFillBasketFill, BsTypeH1 } from "react-icons/bs";
+import React from "react";
+import { BsFillBasketFill } from "react-icons/bs";
+import { HiUserCircle } from "react-icons/hi";
 import Link from "next/link";
 
 import { useStateContext } from "../context/StateContext";
@@ -7,18 +8,14 @@ import Cart from "./Cart";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { IoMdAdd } from "react-icons/io";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 function Header() {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
 
-  if (status === "loading")
-    return (
-      <p className="logo font-extrabold mx-auto text-2xl bg-yellow-400 text-black">
-        ARTISM
-      </p>
-    );
+  // console.log(session);
 
   return (
     <div className="navbar-container flex items-center">
@@ -27,32 +24,39 @@ function Header() {
       </p>
 
       {/* Right */}
-      <div className="text-black flex items-center text-xs space-x-6 whitespace-nowrap">
+      <div className="text-black flex items-center justify-center gap-x-4 text-xs whitespace-nowrap">
         <div className="relative link flex items-center cursor-pointer">
           <IoMdAdd
             onClick={() => router.push("/createproduct")}
             className="bg-yellow-400 h-8 w-8 rounded-full"
           />
         </div>
-        <div className="">
-          {!session ? (
-            <h1 className="font-extrabold md:text-sm link ">Please Click To</h1>
-          ) : (
-            <h1 className="font-extrabold italic text-sm">
-              {session.user.name}
+        {/* //user profile */}
+        {session ? (
+          <>
+            <Image
+              src={
+                session.user?.image ||
+                "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+              }
+              alt=""
+              className="cursor-pointer rounded-full"
+              width={34}
+              height={34}
+              onClick={() => signOut()}
+            />
+            <h1 className="font-extrabold italic text-sm text-gray-500">
+              {session.user?.name}
             </h1>
-          )}
-          <p
-            onClick={session ? signOut : signIn}
-            className="font-extrabold md:text-sm link cursor-pointer">
-            {session ? "sign out" : "sign in"}
-          </p>
-        </div>
-
+          </>
+        ) : (
+          <HiUserCircle className="headerIcon" onClick={() => signIn()} />
+        )}
+        {/* //cart */}
         <div
           onClick={() => setShowCart(true)}
           className=" relative link flex items-center cart-icon">
-          <span className="absolute top-0 ring-0 md:right-10 h-5 w-5 bg-yellow-400 text-center rounded-full text-black font-bold">
+          <span className="absolute top-0 ring-0 md:right-10 h-5 w-5 bg-yellow-400 text-center text-sm rounded-full text-black font-bold">
             {totalQuantities}
           </span>
           <BsFillBasketFill className="h-10" />

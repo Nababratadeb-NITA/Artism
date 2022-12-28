@@ -5,14 +5,16 @@ import { signIn, useSession } from "next-auth/react";
 import { client } from "../lib/client";
 import { useRouter } from "next/router";
 import Loader from "../components/Loader";
+import { toast } from "react-hot-toast";
 
 const createproduct = () => {
   const [title, setTitle] = useState("");
   const [about, setAbout] = useState("");
   const [loading, setLoading] = useState(false);
+  const [slug, setSlug] = useState("");
   const [destination, setDestination] = useState();
   const [fields, setFields] = useState();
-  const [category, setCategory] = useState();
+  const [price, setPrice] = useState("");
   const [imageAsset, setImageAsset] = useState();
   const [wrongImageType, setWrongImageType] = useState(false);
   const { data: session } = useSession();
@@ -51,9 +53,32 @@ const createproduct = () => {
   // console.log(uploadImage);
 
   const savePin = () => {
-    if ("") {
+    const uploadPin = toast.loading("Uploading Product...");
+    if (title && imageAsset?._id && about && destination && price) {
+      const doc = {
+        _type: "product",
+        name: title,
+        slug: slug,
+        price,
+        details: about,
+        postedBy: {
+          _type: "postedBy",
+          _ref: session.user?._id,
+        },
+        image: {
+          _type: "image",
+          asset: {
+            _type: "reference",
+            _ref: imageAsset?._id,
+          },
+        },
+      };
+
       client.create(doc).then(() => {
         router.push("/");
+        toast.success("We Are Reviewing Your Product", {
+          id: uploadPin,
+        });
       });
     } else {
       setFields(true);
@@ -63,6 +88,8 @@ const createproduct = () => {
       }, 2000);
     }
   };
+
+  console.log(savePin);
 
   return (
     <div className="flex flex-col justify-center items-center mt-5 lg:h-4/5">
@@ -138,10 +165,24 @@ const createproduct = () => {
             className="outline-none rounded-xl text-base sm:text-lg border-b-2 border-gray-200 p-2"
           />
           <input
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            placeholder="Minimum Amount Must Be 999/-"
+            className="outline-none rounded-xl text-base sm:text-lg border-b-2 border-gray-200 p-2"
+          />
+          <input
             type="url"
             vlaue={destination}
             onChange={(e) => setDestination(e.target.value)}
             placeholder="Add a link where you store the assests"
+            className="outline-none rounded-xl text-base sm:text-lg border-b-2 border-gray-200 p-2"
+          />
+          <input
+            type="text"
+            vlaue={slug}
+            onChange={(e) => setSlug(e.target.value)}
+            placeholder="Set A Unique Name(Do Not Give Spaces)"
             className="outline-none rounded-xl text-base sm:text-lg border-b-2 border-gray-200 p-2"
           />
 
