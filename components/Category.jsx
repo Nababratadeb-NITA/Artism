@@ -1,8 +1,7 @@
 import { Tab } from "@headlessui/react";
 import React from "react";
-import Product from "./Product";
 
-const Category = ({ category, products }) => {
+const Category = ({ category }) => {
   return (
     <>
       <Tab.Group>

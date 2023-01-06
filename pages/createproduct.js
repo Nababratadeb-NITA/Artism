@@ -59,7 +59,7 @@ const createproduct = () => {
       const doc = {
         _type: "product",
         name: title,
-        price,
+        price: parseInt(price),
         category,
         details: about,
         destination: destination,

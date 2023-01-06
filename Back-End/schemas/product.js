@@ -37,8 +37,7 @@ export default {
     {
       name: "category",
       title: "Category",
-      type: "reference",
-      to: [{ type: "category" }],
+      type: "string",
     },
     {
       name: "destination",

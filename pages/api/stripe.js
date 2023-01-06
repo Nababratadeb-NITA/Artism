@@ -10,9 +10,9 @@ export default async function handler(req, res) {
         mode: "payment",
         payment_method_types: ["card"],
         billing_address_collection: "auto",
-        shipping_options: [{ shipping_rate: "shr_1Kn3IaEnylLNWUqj5rqhg9oV" }],
+        shipping_options: [{ shipping_rate: "shr_1M0571K6LIoXvW7yryTtOcDP" }],
         line_items: req.body.map((item) => {
-          const img = item.image[0].asset._ref;
+          const img = item.image.asset._ref;
           const newImage = img
             .replace(
               "image-",
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
 
           return {
             price_data: {
-              currency: "usd",
+              currency: "inr",
               product_data: {
                 name: item.name,
                 images: [newImage],
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
             quantity: item.quantity,
           };
         }),
-        success_url: `${req.headers.origin}/sucess`,
+        success_url: `${req.headers.origin}/success`,
         cancel_url: `${req.headers.origin}/canceled`,
       };
 

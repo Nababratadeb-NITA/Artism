@@ -9,7 +9,7 @@ import { client, urlFor } from "../../lib/client";
 function ProductDetails({ products, product }) {
   const [post, setPost] = useState(product);
 
-  const { image, name, details, price } = product;
+  const { image, name, details, price, postedBy } = product;
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
 
   const handleBuyNow = () => {
@@ -24,20 +24,19 @@ function ProductDetails({ products, product }) {
     <>
       {post && (
         <div>
-          <div className="product-detail-container">
+          <div className="product-detail-container flex flex-col">
             <div>
               <div className="image-container">
                 <img src={urlFor(image)} className="product-detail-image" />
               </div>
+              
             </div>
 
             <div className="product-detail-desc">
               <h1 className="space-y-2 text-xl font-bold md:text-2xl">
                 {name}
               </h1>
-              <div className="reviews"></div>
-              <h4>Details: </h4>
-              <p>{details}</p>
+              <p className="font-base"> by {postedBy}</p>
               <p className="price">Rs. {price}</p>
               <div className="quantity">
                 <h3>Quantity:</h3>
@@ -72,17 +71,8 @@ function ProductDetails({ products, product }) {
                 </button>
               </div>
             </div>
-          </div>
-
-          <div className="maylike-products-wrapper">
-            <h2>You may also like</h2>
-            <div className="marquee">
-              <div className="flex h-fit w-[320px] select-none space-y-3 rounded-xl track">
-                {products.map((item) => (
-                  <Product key={item._id} product={item} />
-                ))}
-              </div>
-            </div>
+            <h2>Details: </h2>
+              <p>{details}</p>
           </div>
         </div>
       )}
