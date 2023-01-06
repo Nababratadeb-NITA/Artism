@@ -6,15 +6,16 @@ import { client } from "../lib/client";
 import { useRouter } from "next/router";
 import Loader from "../components/Loader";
 import { toast } from "react-hot-toast";
+import { categories } from "../lib/index";
 
 const createproduct = () => {
   const [title, setTitle] = useState("");
   const [about, setAbout] = useState("");
   const [loading, setLoading] = useState(false);
-  const [slug, setSlug] = useState("");
   const [destination, setDestination] = useState();
   const [fields, setFields] = useState();
   const [price, setPrice] = useState("");
+  const [category, setCategory] = useState();
   const [imageAsset, setImageAsset] = useState();
   const [wrongImageType, setWrongImageType] = useState(false);
   const { data: session } = useSession();
@@ -58,13 +59,11 @@ const createproduct = () => {
       const doc = {
         _type: "product",
         name: title,
-        slug: slug,
         price,
+        category,
         details: about,
-        postedBy: {
-          _type: "postedBy",
-          _ref: session.user?._id,
-        },
+        destination: destination,
+        postedBy: session?.user.name,
         image: {
           _type: "image",
           asset: {
@@ -76,7 +75,7 @@ const createproduct = () => {
 
       client.create(doc).then(() => {
         router.push("/");
-        toast.success("We Are Reviewing Your Product", {
+        toast.success("Your Product Is Uploaded", {
           id: uploadPin,
         });
       });
@@ -178,15 +177,8 @@ const createproduct = () => {
             placeholder="Add a link where you store the assests"
             className="outline-none rounded-xl text-base sm:text-lg border-b-2 border-gray-200 p-2"
           />
-          <input
-            type="text"
-            vlaue={slug}
-            onChange={(e) => setSlug(e.target.value)}
-            placeholder="Set A Unique Name(Do Not Give Spaces)"
-            className="outline-none rounded-xl text-base sm:text-lg border-b-2 border-gray-200 p-2"
-          />
 
-          {/* <div className="flex flex-col">
+          <div className="flex flex-col">
             <div>
               <p className="mb-2 font-semibold text:lg sm:text-xl">
                 Choose Pin Category
@@ -195,26 +187,27 @@ const createproduct = () => {
                 onChange={(e) => {
                   setCategory(e.target.value);
                 }}
-                className="outline-none  w-4/5 text-base border-b-2 border-gray-200 p-2 rounded-md cursor-pointer">
+                className="outline-none w-4/5 text-base border-b-2 border-gray-200 p-2 rounded-md cursor-pointer">
                 <option value="others" className="sm:text-bg bg-white">
-                  Select Category */}
-          {/* </option> */}
-          {/* {categories.map((item) => (
-                    <option
-                      className="text-base border-0 outline-none  capitalize bg-white text-black "
-                      value={item.name}>
-                      {item.name}
-                    </option>
-                  ))} */}
-          {/* </select> */}
-          {/* </div> */}
-          <div className="flex justify-end items-end mt-5">
-            <button
-              type="button"
-              onClick={!session ? signIn : savePin}
-              className="bg-yellow-400 text-black font-bold p-2 rounded-full w-28 outline-none ">
-              List Product
-            </button>
+                  Select Category
+                </option>
+                {categories.map((item) => (
+                  <option
+                    className="text-base border-0 outline-none capitalize bg-white text-black "
+                    value={item.name}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex justify-end items-end mt-5">
+              <button
+                type="button"
+                onClick={!session ? signIn : savePin}
+                className="bg-yellow-400 text-black font-bold p-2 rounded-full w-28 outline-none ">
+                List Product
+              </button>
+            </div>
           </div>
         </div>
       </div>

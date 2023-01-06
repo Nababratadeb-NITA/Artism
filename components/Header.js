@@ -45,17 +45,21 @@ function Header() {
               height={34}
               onClick={() => signOut()}
             />
-            <h1 className="font-extrabold italic text-sm text-gray-500">
+            <h1 className="font-extrabold hidden md:inline italic text-sm text-gray-500">
               {session.user?.name}
             </h1>
           </>
         ) : (
-          <HiUserCircle className="h-10 w-10" onClick={() => signIn()} />
+          <HiUserCircle
+            className="h-10 w-10 cursor-pointer"
+            onClick={() => signIn()}
+          />
         )}
+
         {/* //cart */}
         <div
           onClick={() => setShowCart(true)}
-          className=" relative link flex items-center cart-icon">
+          className="relative link flex items-center cart-icon">
           <span className="absolute top-0 ring-0 md:right-10 h-5 w-5 bg-yellow-400 text-center text-sm rounded-full text-black font-bold">
             {totalQuantities}
           </span>

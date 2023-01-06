@@ -3,6 +3,7 @@ import { SanityAdapter } from "next-auth-sanity";
 import googleProvider from "next-auth/providers/google";
 import { client } from "../../../lib/client";
 export const authOptions = {
+  adapter: SanityAdapter(client),
   // Configure one or more authentication providers
   providers: [
     googleProvider({
@@ -15,6 +16,5 @@ export const authOptions = {
   session: {
     strategy: "jwt",
   },
-  adapter: SanityAdapter(client),
 };
 export default NextAuth(authOptions);

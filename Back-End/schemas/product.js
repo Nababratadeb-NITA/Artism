@@ -20,20 +20,9 @@ export default {
       type: "string",
     },
     {
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: {
-        source: "name",
-        maxLength: 90,
-        slugify: (input) =>
-          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
-      },
-    },
-    {
       name: "price",
       title: "Price",
-      type: "string",
+      type: "number",
     },
     {
       name: "details",
@@ -41,10 +30,20 @@ export default {
       type: "string",
     },
     {
+      name: "postedBy",
+      title: "PostedBy",
+      type: "string",
+    },
+    {
       name: "category",
       title: "Category",
       type: "reference",
       to: [{ type: "category" }],
+    },
+    {
+      name: "destination",
+      title: "Destination",
+      type: "url",
     },
   ],
 };
