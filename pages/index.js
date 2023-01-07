@@ -15,7 +15,7 @@ const Home = ({ products, bannerData, categoryData }) => {
         <p>That you can use in your own game</p>
       </div>
 
-      <Category category={categoryData} products={products} />
+      {/* <Category category={categoryData} products={products} /> */}
 
       {/* Products */}
       <div className="products-container">
