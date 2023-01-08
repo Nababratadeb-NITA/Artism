@@ -26,9 +26,42 @@ You are in charge of your data and customizations.
 
 * [Sanity](https://www.sanity.io/)
 
-## Getting Started with development
-Please view the [documentation](https://nextjs.org/) 
 
+### Getting started
+
+1. Clone the project
+
+```sh
+$ git clone https://github.com/Nababratadeb-NITA/Artism.git
+```
+
+2. Install the dependencies:
+
+```sh
+$ yarn
+
+# or
+
+$ npm install
+```
+
+3. Run the project
+
+```sh
+$ npm run dev
+
+# or to build
+
+$ npm run build
+```
+
+## Deploy to Vercel
+
+Use the [Vercel CLI](https://vercel.com/download)
+
+```sh
+vercel
+```
 
 ## Contributing
 
