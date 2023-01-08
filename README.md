@@ -1,6 +1,6 @@
 <h1 align="center" style="border-bottom: none">
     <b>
-        <a href="https://artism.vercel.app/">Artism.IO</a><br>
+        <a href="https://artism.vercel.app/">ARTISM.IO</a><br>
     </b>
     ⭐️  The Open Source Alternative To Unity Asset Store  ⭐️ <br>
 </h1>
