@@ -1,17 +1,85 @@
-Modern Full Stack ECommerce Application with Stripe & Sanity
+<h1 align="center" style="border-bottom: none">
+    <b>
+        <a href="https://artism.vercel.app/">ARTISM.IO</a><br>
+    </b>
+    ⭐️  The Open Source Alternative To Unity Asset Store  ⭐️ <br>
+</h1>
 
-## Launch your development career with project-based coaching
+<p align="center">
+You are in charge of your data and customizations.
+</p>
 
-**Build and Deploy a fully responsive Modern Full Stack Ecommerce application with Payments functionality**. With Modern design, animations, the ability to add and edit products on the go using a CMS, all advanced cart functionalities, and most importantly the complete integration with Stripe so that you can cover REAL payments. This is the best e-commerce website project that you can currently find on GitHub!
+<p align="center">
+<a href="https://github.com/Nababratadeb-NITA/Artism"><img src="https://img.shields.io/github/forks/Nababratadeb-NITA/Artism.svg"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-purple.svg" alt="License: MIT"></a>
 
-In this Repo, you'll learn:
+</p>
 
-- Advanced React Best Practices such as
-  - Folder and file structure, hooks and refs
-- Advanced State Management of the entire application using React Context API
-- Next.js Best Practices such as
-  - File-based routing, Data fetching that allows server-side rendering and static generation which makes your websites incredibly optimized (show getServerSideProps, getStaticPaths, getStaticProps), and you’ll also learn how to use Next.js as a backend endpoint.
-- You’ll learn how to integrate Stripe to manage payments, products, shipping rates, and the entire checkout process
-- And most importantly you’ll learn how to manage the entire content of your app using Sanity. Sanity is the unified content platform that’ll make the making of our entire app possible. <show sanity desk>
-- Through Sanity, you or your clients will be able to change the store’s homepage and more importantly, the details of all the products in the store, instantly and on the go!
-- Sanity allows us to focus on developing the application without having to worry about the content, file storage, and databases. They’ll cover the dirty work for us and allow us to build scalable and modern e-commerce web applications extremely easily.
+<p align="center">
+    <a href="https://artism.vercel.app/"><b>Website</b></a> •
+    <a href="https://twitter.com/NababrataNFT"><b>Twitter</b></a>
+</p>
+
+## Built With
+
+* [Next.Js](https://nextjs.org/)
+
+* [Sanity](https://www.sanity.io/)
+
+
+### Getting started
+
+1. Clone the project
+
+```sh
+$ git clone https://github.com/Nababratadeb-NITA/Artism.git
+```
+
+2. Install the dependencies:
+
+```sh
+$ yarn
+
+# or
+
+$ npm install
+```
+
+3. Run the project
+
+```sh
+$ npm run dev
+
+# or to build
+
+$ npm run build
+```
+
+## Deploy to Vercel
+
+Use the [Vercel CLI](https://vercel.com/download)
+
+```sh
+vercel
+```
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**. Please look at [Contributing to Artism](https://artism.vercel.app/) for details.
+
+If your Pull Request is accepted as it fixes a bug, adds functionality, or makes AppFlowy's codebase significantly easier to use or understand, congratulations! If your administrative and managerial work behind the scenes that sustains the community as a whole, congratulations! You are now an official contributor to AppFlowy. Get in touch with us ([link](https://artism.vercel.app/)) to receive the very special Contributor T-shirt!
+Proudly wear your T-shirt and show it to us by tagging [@appflowy](https://twitter.com/NababrataNFT) on Twitter.
+
+
+<!-- ## Join the community to build AppFlowy together!
+<a href="https://github.com/AppFlowy-IO/AppFlowy/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=AppFlowy-IO/AppFlowy" />
+</a> -->
+
+## Why Are We Building This?
+
+We are building this to help small scale game development startups to have their 3D model charecters at very low cost and the designer also can get profit 
+
+## License
+
+Distributed under the MIT License.
