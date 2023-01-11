@@ -35,6 +35,11 @@ export default {
       type: "string",
     },
     {
+      name: "userImg",
+      title: "UserImg",
+      type: "string",
+    },
+    {
       name: "category",
       title: "Category",
       type: "string",

@@ -16,6 +16,7 @@ const Home = ({ products, bannerData, categoryData }) => {
   const resetProducts = () => {
     setProductsNew(products);
   };
+  console.log(products);
   return (
     <div className="max-w-screen-2xl mx-auto md:mx-10">
       <Banner banner={bannerData.length && bannerData[0]} />
@@ -44,7 +45,7 @@ const Home = ({ products, bannerData, categoryData }) => {
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const query = '*[_type == "product"] | order(_createdAt desc)';
+  const query = '*[_type == "product"] | order(_updatedAt desc)';
   const products = await client.fetch(query);
 
   const bannerQuery = '*[_type == "banner"]';
