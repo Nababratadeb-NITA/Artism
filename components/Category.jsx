@@ -2,15 +2,26 @@ import { Tab } from "@headlessui/react";
 
 import React, { useState } from "react";
 
-const Category = ({ category, products }) => {
+const Category = ({ category, products, filterProducts, resetProducts }) => {
   const [items, setItems] = useState(products);
 
-  const filter = (cetItem) => {};
+  const filter = (cetItem) => {
+    const updatedItems = products.filter((elem) => {
+      return elem.category === cetItem;
+    });
+    setItems(updatedItems);
+    filterProducts(updatedItems);
+    console.log(updatedItems);
+  };
+
   return (
     <>
       <Tab.Group>
         <Tab.List className="flex justify-center">
           <Tab
+            onClick={() => {
+              resetProducts();
+            }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                 selected
@@ -21,7 +32,10 @@ const Category = ({ category, products }) => {
             ALL
           </Tab>
           <Tab
-            onClick={() => filter("3D")}
+            onClick={() => {
+              resetProducts();
+              filter("3D");
+            }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                 selected
@@ -32,6 +46,10 @@ const Category = ({ category, products }) => {
             3D
           </Tab>
           <Tab
+            onClick={() => {
+              resetProducts();
+              filter("2D");
+            }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                 selected
@@ -42,6 +60,10 @@ const Category = ({ category, products }) => {
             2D
           </Tab>
           <Tab
+            onClick={() => {
+              resetProducts();
+              filter("FPS");
+            }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                 selected
@@ -52,6 +74,10 @@ const Category = ({ category, products }) => {
             FPS
           </Tab>
           <Tab
+            onClick={() => {
+              resetProducts();
+              filter("RPG");
+            }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                 selected

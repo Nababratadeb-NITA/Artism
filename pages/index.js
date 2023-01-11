@@ -7,16 +7,17 @@ import { client } from "../lib/client";
 
 const Home = ({ products, bannerData, categoryData }) => {
   // console.log(products);
-  const [productsNew, setProductsNew] = useState(products);
+  const [originalProducts, setOriginalProducts] = useState(products);
+  const [productsNew, setProductsNew] = useState(originalProducts);
 
   const filterProducts = (prod) => {
     setProductsNew(prod);
   };
 
   const resetProducts = () => {
-    setProductsNew(products);
+    setProductsNew(originalProducts);
   };
-  console.log(products);
+
   return (
     <div className="max-w-screen-2xl mx-auto md:mx-10">
       <Banner banner={bannerData.length && bannerData[0]} />
@@ -28,14 +29,14 @@ const Home = ({ products, bannerData, categoryData }) => {
 
       <Category
         category={categoryData}
-        products={products}
+        products={originalProducts}
         filterProducts={filterProducts}
         resetProducts={resetProducts}
       />
 
       {/* Products */}
       <div className="products-container">
-        {products?.map((product) => (
+        {productsNew?.map((product) => (
           <Product key={product._id} product={product} />
         ))}
       </div>
