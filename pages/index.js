@@ -1,22 +1,22 @@
-import { useState } from 'react';
-import Banner from '../components/Banner';
-import Category from '../components/Category';
-import Product from '../components/Product';
+import { useState } from "react";
+import Banner from "../components/Banner";
+import Category from "../components/Category";
+import Product from "../components/Product";
 
-import { client } from '../lib/client';
+import { client } from "../lib/client";
 
 const Home = ({ products, bannerData, categoryData }) => {
   // console.log(products);
-  const [originalProducts, setOriginalProducts] = useState(products);
-  const [productsNew, setProductsNew] = useState(originalProducts);
+  const [productsNew, setProductsNew] = useState(products);
 
   const filterProducts = (prod) => {
     setProductsNew(prod);
   };
 
   const resetProducts = () => {
-    setProductsNew(originalProducts);
+    setProductsNew(products);
   };
+  console.log(products);
   return (
     <div className="max-w-screen-2xl mx-auto md:mx-10">
       <Banner banner={bannerData.length && bannerData[0]} />
@@ -28,14 +28,14 @@ const Home = ({ products, bannerData, categoryData }) => {
 
       <Category
         category={categoryData}
-        products={originalProducts}
+        products={products}
         filterProducts={filterProducts}
         resetProducts={resetProducts}
       />
 
       {/* Products */}
       <div className="products-container">
-        {productsNew?.map((product) => (
+        {products?.map((product) => (
           <Product key={product._id} product={product} />
         ))}
       </div>
@@ -45,7 +45,7 @@ const Home = ({ products, bannerData, categoryData }) => {
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const query = '*[_type == "product"] | order(_createdAt desc)';
+  const query = '*[_type == "product"] | order(_updatedAt desc)';
   const products = await client.fetch(query);
 
   const bannerQuery = '*[_type == "banner"]';
