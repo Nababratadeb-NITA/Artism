@@ -1,6 +1,6 @@
-import { Tab } from "@headlessui/react";
+import { Tab } from '@headlessui/react';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const Category = ({ category, products, filterProducts, resetProducts }) => {
   const [items, setItems] = useState(products);
@@ -25,66 +25,76 @@ const Category = ({ category, products, filterProducts, resetProducts }) => {
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                 selected
-                  ? "borderGradient bg-[#324d67] text-white"
-                  : "border-b-2 border-[#324d67] text-[#747474]"
+                  ? 'borderGradient bg-[#324d67] text-white'
+                  : 'border-b-2 border-[#324d67] text-[#747474]'
               }`
-            }>
+            }
+          >
             ALL
           </Tab>
           <Tab
             onClick={() => {
               resetProducts();
-              filter("3D");
+              filter('3D');
+
             }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                 selected
-                  ? "borderGradient bg-[#324d67] text-white"
-                  : "border-b-2 border-[#324d67] text-[#747474]"
+                  ? 'borderGradient bg-[#324d67] text-white'
+                  : 'border-b-2 border-[#324d67] text-[#747474]'
               }`
-            }>
+            }
+          >
             3D
           </Tab>
           <Tab
             onClick={() => {
               resetProducts();
-              filter("2D");
+
+              filter('2D');
+
             }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                 selected
-                  ? "borderGradient bg-[#324d67] text-white"
-                  : "border-b-2 border-[#324d67] text-[#747474]"
+                  ? 'borderGradient bg-[#324d67] text-white'
+                  : 'border-b-2 border-[#324d67] text-[#747474]'
               }`
-            }>
+            }
+          >
             2D
           </Tab>
           <Tab
             onClick={() => {
               resetProducts();
-              filter("FPS");
+              filter('FPS');
+
             }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                 selected
-                  ? "borderGradient bg-[#324d67] text-white"
-                  : "border-b-2 border-[#324d67] text-[#747474]"
+                  ? 'borderGradient bg-[#324d67] text-white'
+                  : 'border-b-2 border-[#324d67] text-[#747474]'
               }`
-            }>
+            }
+          >
             FPS
           </Tab>
           <Tab
             onClick={() => {
               resetProducts();
               filter("RPG");
+
             }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                 selected
-                  ? "borderGradient bg-[#324d67] text-white"
-                  : "border-b-2 border-[#324d67] text-[#747474]"
+                  ? 'borderGradient bg-[#324d67] text-white'
+                  : 'border-b-2 border-[#324d67] text-[#747474]'
               }`
-            }>
+            }
+          >
             RPG
           </Tab>
         </Tab.List>
