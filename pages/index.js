@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Banner from "../components/Banner";
 import Category from "../components/Category";
 import Product from "../components/Product";
@@ -6,6 +7,15 @@ import { client } from "../lib/client";
 
 const Home = ({ products, bannerData, categoryData }) => {
   // console.log(products);
+  const [productsNew, setProductsNew] = useState(products);
+
+  const filterProducts = (prod) => {
+    setProductsNew(prod);
+  };
+
+  const resetProducts = () => {
+    setProductsNew(products);
+  };
   return (
     <div className="max-w-screen-2xl mx-auto md:mx-10">
       <Banner banner={bannerData.length && bannerData[0]} />
@@ -15,7 +25,12 @@ const Home = ({ products, bannerData, categoryData }) => {
         <p>That you can use in your own game</p>
       </div>
 
-      <Category category={categoryData} products={products} />
+      <Category
+        category={categoryData}
+        products={products}
+        filterProducts={filterProducts}
+        resetProducts={resetProducts}
+      />
 
       {/* Products */}
       <div className="products-container">
