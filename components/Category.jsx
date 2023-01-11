@@ -13,7 +13,6 @@ const Category = ({ category, products, filterProducts, resetProducts }) => {
     filterProducts(updatedItems);
     console.log(updatedItems);
   };
-  console.log(products);
 
   return (
     <>
@@ -37,6 +36,7 @@ const Category = ({ category, products, filterProducts, resetProducts }) => {
             onClick={() => {
               resetProducts();
               filter('3D');
+
             }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
@@ -51,7 +51,9 @@ const Category = ({ category, products, filterProducts, resetProducts }) => {
           <Tab
             onClick={() => {
               resetProducts();
+
               filter('2D');
+
             }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
@@ -67,6 +69,7 @@ const Category = ({ category, products, filterProducts, resetProducts }) => {
             onClick={() => {
               resetProducts();
               filter('FPS');
+
             }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
@@ -81,7 +84,8 @@ const Category = ({ category, products, filterProducts, resetProducts }) => {
           <Tab
             onClick={() => {
               resetProducts();
-              filter('RPG');
+              filter("RPG");
+
             }}
             className={({ selected }) =>
               `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
