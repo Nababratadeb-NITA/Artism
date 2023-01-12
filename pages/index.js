@@ -6,7 +6,7 @@ import Product from "../components/Product";
 import { client } from "../lib/client";
 
 const Home = ({ products, bannerData, categoryData }) => {
-  // console.log(products);
+  console.log(products);
   const [originalProducts, setOriginalProducts] = useState(products);
   const [productsNew, setProductsNew] = useState(originalProducts);
 
@@ -19,7 +19,7 @@ const Home = ({ products, bannerData, categoryData }) => {
   };
 
   return (
-    <div className="max-w-screen-2xl mx-auto md:mx-10">
+    <div className="mx-auto max-w-screen-2xl md:mx-10">
       <Banner banner={bannerData.length && bannerData[0]} />
 
       <div className="products-heading">
@@ -35,7 +35,7 @@ const Home = ({ products, bannerData, categoryData }) => {
       />
 
       {/* Products */}
-      <div className="products-container">
+      <div className="grid grid-cols-12 gap-8 mt-10">
         {productsNew?.map((product) => (
           <Product key={product._id} product={product} />
         ))}
