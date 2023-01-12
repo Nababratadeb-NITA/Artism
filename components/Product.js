@@ -1,42 +1,57 @@
-import React from "react";
 import Link from "next/link";
+import React from "react";
+import { MdAddShoppingCart } from "react-icons/md";
+import { useStateContext } from "../context/StateContext";
 
 import { urlFor } from "../lib/client";
-import Image from "next/image";
 
-const Product = ({
-  product: { image, name, price, _id, postedBy, userImg },
-}) => {
+const Product = ({ product }) => {
+  const { qty, onAdd } = useStateContext();
+  const { image, name, price, _id, postedBy, userImg } = product;
+
+  const addToCart = () => onAdd(product, qty);
+
   return (
-    <div>
+    <div className="flex flex-col col-span-12 bg-white rounded-lg cursor-pointer md:col-span-6 xl:col-span-3 h-fit product-card">
       <Link href={`/product/${_id}`}>
-        <div className="flex flex-col m-5 bg-white z-30 p-5 rounded-md product-card">
-          <div className="mb-3 flex justify-start">
-            <Image
-              width={45}
-              height={10}
-              src={userImg}
-              className="rounded-full bg-black"
-              alt=""
-            />
-            <div>
-              <p>Creator</p>
-              <h2 className="font-semibold">{postedBy}</h2>
-            </div>
-          </div>
+        <div className="w-full max-h-1/2">
           <img
-            className="product-image h-64 object-contain"
             src={urlFor(image)}
-            alt="img"
+            className="object-cover w-full rounded-tl-lg rounded-tr-lg aspect-square"
           />
-          <p className="product-name italic">{name}</p>
-          <div className="h-[1px] bg-gray-600 w-full mt-2"></div>
-          <div className="flex justify-between mt-2">
-            <p className="product-price my-3">Rs. {price}</p>
-            <div className="p-2 bg-yellow-500 rounded-lg">Desc</div>
-          </div>
         </div>
       </Link>
+
+      <Link href={`/product/${_id}`}>
+        <div className="flex items-center justify-between px-3 mt-4">
+          <h3 className="text-xl font-semibold text-gray-700">{name}</h3>
+          <span className="text-gray-700">&#8377;{price}</span>
+        </div>
+      </Link>
+
+      <div className="flex items-center gap-3 px-3 mt-4">
+        {userImg ? (
+          <img
+            width={45}
+            height={10}
+            src={userImg}
+            className="w-8 h-8 rounded-full"
+            alt={name}
+          />
+        ) : (
+          <div className="w-8 h-8 font-semibold bg-black rounded-full"></div>
+        )}
+
+        <span className="text-sm text-gray-500">{postedBy}</span>
+      </div>
+
+      <button
+        className="flex items-center justify-center gap-3 py-3 mx-4 my-4 text-white bg-orange-500 rounded-lg hover:bg-orange-600"
+        onClick={addToCart}
+      >
+        <MdAddShoppingCart />
+        <span className="leading-none">Add to Cart</span>
+      </button>
     </div>
   );
 };

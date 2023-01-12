@@ -108,10 +108,11 @@ span.text-red {
   width: 100%;
 }
 .product-card {
-  cursor: pointer;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
-  color: #324d67;
+  /* color: #324d67;
+    cursor: pointer;
+  */
 }
 .product-card:hover {
   transform: scale(1.1, 1.1);
