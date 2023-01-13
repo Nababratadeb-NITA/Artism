@@ -48,14 +48,14 @@ function ProductDetails({ product }) {
           <HiOutlineArrowNarrowLeft className="text-lg" />
         </button>
 
-        <div className="flex items-end gap-8">
-          <h1 className="mt-8 text-5xl font-semibold">{name}</h1>
+        <div className="flex flex-col md:flex-row items-start md:items-end  gap-3 md:gap-8">
+          <h1 className="mt-8 text-3xl xl:text-5xl font-semibold">{name}</h1>
           <span className="px-4 text-gray-500 border border-gray-400 rounded">
             {category}
           </span>
         </div>
 
-        <span className="mt-3 text-lg">&#8377; {price}</span>
+        <span className="mt-6 md:mt-3 text-lg">&#8377; {price}</span>
 
         <span className="mt-4 text-gray-500">Created by {postedBy}</span>
 
