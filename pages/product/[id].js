@@ -27,7 +27,7 @@ function ProductDetails({ product }) {
           <div className="product-detail-desc">
             <h1 className="space-y-2 text-xl font-bold md:text-2xl">{name}</h1>
             <p className="font-base"> CREATED BY {postedBy}</p>
-            <p className="price">Rs. {price}</p>
+            <p className="price">&#8377;{price}</p>
             <div className="quantity">
               <h3>Quantity:</h3>
               <p className="quantity-desc flex items-center justify-center">
