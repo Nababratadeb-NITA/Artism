@@ -24,7 +24,7 @@ const Product = ({ product }) => {
 
       <Link href={`/product/${_id}`}>
         <div className="flex items-center justify-between px-3 mt-4">
-          <h3 className="text-xl font-semibold text-gray-700">{name}</h3>
+          <h3 className="text-xl font-semibold text-gray-700">{name.substr(0, 20)}</h3>
           <span className="text-gray-700">&#8377;{price}</span>
         </div>
       </Link>
