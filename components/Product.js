@@ -12,13 +12,17 @@ const Product = ({
       <Link href={`/product/${_id}`}>
         <div className="flex flex-col m-5 bg-white z-30 p-5 rounded-md product-card">
           <div className="mb-3 flex justify-start">
-            <Image
-              width={45}
-              height={10}
-              src={userImg}
-              className="rounded-full bg-black"
-              alt=""
-            />
+            {userImg ? (
+              <img
+                width={45}
+                height={10}
+                src={userImg}
+                className="w-8 h-8 rounded-full"
+                alt={name}
+              />
+            ) : (
+              <div className="w-8 h-8 font-semibold bg-black rounded-full"></div>
+            )}
             <div>
               <p>Creator</p>
               <h2 className="font-semibold">{postedBy}</h2>
