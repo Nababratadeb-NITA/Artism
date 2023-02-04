@@ -3,9 +3,10 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 import { useStateContext } from "../../context/StateContext";
 import { client, urlFor } from "../../lib/client";
+import { downloadImage } from "../../lib/utils";
 
 function ProductDetails({ product }) {
-  const { image, name, details, price, postedBy } = product;
+  const { image, name, details, price, postedBy, _id } = product;
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
 
   const handleBuyNow = () => {
@@ -53,7 +54,10 @@ function ProductDetails({ product }) {
                 onClick={() => onAdd(product, qty)}>
                 Add to Cart
               </button>
-              <button type="button" className="buy-now" onClick={handleBuyNow}>
+              <button
+                type="button"
+                className="buy-now"
+                onClick={() => downloadImage(_id, image)}>
                 Buy Now
               </button>
             </div>
