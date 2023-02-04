@@ -6,7 +6,6 @@ import Product from "../components/Product";
 import { client } from "../lib/client";
 
 const Home = ({ products, bannerData, categoryData }) => {
-  // console.log(products);
   const [originalProducts, setOriginalProducts] = useState(products);
   const [productsNew, setProductsNew] = useState(originalProducts);
 

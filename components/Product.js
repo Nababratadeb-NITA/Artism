@@ -28,12 +28,8 @@ const Product = ({
               <h2 className="font-semibold">{postedBy}</h2>
             </div>
           </div>
-          <img
-            className="product-image h-64 object-contain"
-            src={urlFor(image)}
-            alt="img"
-          />
-          <p className="product-name italic">{name}</p>
+          <img className="product-image h-64" src={urlFor(image)} alt="img" />
+          <p className="product-name italic">{name.substr(0, 15)}</p>
           <div className="h-[1px] bg-gray-600 w-full mt-2"></div>
           <div className="flex justify-between mt-2">
             <p className="product-price my-3">Rs. {price}</p>
