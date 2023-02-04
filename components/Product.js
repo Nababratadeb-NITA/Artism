@@ -14,7 +14,7 @@ const Product = ({ product }) => {
   return (
     <div className="flex flex-col col-span-12 bg-white rounded-lg cursor-pointer md:col-span-6 xl:col-span-3 h-fit product-card">
       <Link href={`/product/${_id}`}>
-        <div className="flex flex-col m-5 bg-white z-30 p-5 rounded-md product-card">
+        <div className="flex flex-col bg-white z-30 rounded-md product-card">
           <div className="w-full max-h-1/2">
             <img
               src={urlFor(image)}
