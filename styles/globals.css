@@ -122,7 +122,7 @@ span.text-red {
   background-color: #ebebeb;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
-  /* object-fit: fill; */
+  object-fit: fill;
 }
 
 .product-name {

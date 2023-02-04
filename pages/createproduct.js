@@ -64,6 +64,7 @@ const createproduct = () => {
         details: about,
         destination: destination,
         postedBy: session?.user.name,
+        userImg: session.user?.image,
         userImg: session?.user.image,
         image: {
           _type: "image",
