@@ -63,19 +63,6 @@ Use the [Vercel CLI](https://vercel.com/download)
 vercel
 ```
 
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**. Please look at [Contributing to Artism](https://artism.vercel.app/) for details.
-
-If your Pull Request is accepted as it fixes a bug, adds functionality, or makes AppFlowy's codebase significantly easier to use or understand, congratulations! If your administrative and managerial work behind the scenes that sustains the community as a whole, congratulations! You are now an official contributor to AppFlowy. Get in touch with us ([link](https://artism.vercel.app/)) to receive the very special Contributor T-shirt!
-Proudly wear your T-shirt and show it to us by tagging [@appflowy](https://twitter.com/NababrataNFT) on Twitter.
-
-
-<!-- ## Join the community to build AppFlowy together!
-<a href="https://github.com/AppFlowy-IO/AppFlowy/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=AppFlowy-IO/AppFlowy" />
-</a> -->
-
 ## Why Are We Building This?
 
 We are building this to help small scale game development startups to have their 3D model charecters at very low cost and the designer also can get profit 
