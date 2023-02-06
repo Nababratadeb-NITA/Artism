@@ -12,8 +12,9 @@ const Product = ({ product }) => {
   const addToCart = () => onAdd(product, qty);
 
   return (
+    <>
+          <Link href={`/product/${_id}`}>
     <div className="flex flex-col col-span-12 bg-white rounded-lg cursor-pointer md:col-span-6 xl:col-span-3 h-fit product-card">
-      <Link href={`/product/${_id}`}>
         <div className="flex flex-col bg-white z-30 rounded-md product-card">
           <div className="w-full max-h-1/2">
             <img
@@ -56,7 +57,7 @@ const Product = ({ product }) => {
         <MdAddShoppingCart />
         <span className="leading-none">Add to Cart</span>
       </button>
-    </div>
+    </>
   );
 };
 
