@@ -78,7 +78,7 @@ function ProductDetails({ product }) {
             </button>
             <button
               className="px-6 py-2 text-orange-500 flex-grow border border-orange-500 rounded-lg"
-              onClick={downloadImage}>
+              onClick={() => downloadImage(_id, urlFor(image).url())}>
               Download Now
             </button>
           </div>
