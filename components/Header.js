@@ -19,8 +19,8 @@ function Header() {
 
   return (
     <div className="navbar-container flex items-center">
-      <p className="logo font-extrabold">
-        <Link href="/">ARTISM</Link>
+      <p className="font-extrabold text-2xl text-gray-600">
+        <Link href="/">RenderHub</Link>
       </p>
 
       {/* Right */}

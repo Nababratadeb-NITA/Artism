@@ -71,10 +71,6 @@ span.text-red {
   -webkit-text-stroke: 1px #fd9208;
   margin-left: 6px;
 }
-.logo {
-  color: gray;
-  font-size: 18px;
-}
 .cart-icon {
   font-size: 25px;
   color: gray;

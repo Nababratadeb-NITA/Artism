@@ -11,9 +11,7 @@ const Layout = ({ children }) => {
         <Head>
           <title>ARTISM</title>
         </Head>
-        <Header>
           <Header />
-        </Header>
         <main className="main-container">{children}</main>
       </div>
       <footer className="h-[1px] w-full bg-gray-300">
