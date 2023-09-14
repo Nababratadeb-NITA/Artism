@@ -126,7 +126,7 @@ const Cart = () => {
               <button
                 type="button"
                 className="btn"
-                onClick={!session ? signIn : handleCheckOut}>
+                onClick={handleCheckOut}>
                 Pay with Stripe
               </button>
             </div>
